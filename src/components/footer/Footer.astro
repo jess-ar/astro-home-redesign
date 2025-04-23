@@ -1,15 +1,12 @@
 ---
+// src/components/footer/Footer.astro
 const solutions = [
   { title: 'Professional', href: '/solutions/professional' },
   { title: 'Agency',       href: '/solutions/agency' },
   { title: 'Ecommerce',    href: '/solutions/ecommerce' },
   { title: 'Connectivity', href: '/solutions/connectivity' },
-  {
-    title: 'White label, Integrated & Bespoke',
-    href: '/solutions/white-label',
-  },
+  { title: 'White label, Integrated & Bespoke', href: '/solutions/white-label' },
 ]
-
 const sections = [
   { title: 'Partnerships',   href: '/partnerships' },
   { title: 'Deliverability', href: '/deliverability' },
@@ -18,92 +15,58 @@ const sections = [
   { title: 'Integrations',   href: '/integrations' },
   { title: 'Contact',        href: '/contact' },
 ]
-
 const partnerBadges = [
   { name: 'Return Path', image: '/images/partners/return-path.png' },
   { name: 'Signal Spam', image: '/images/partners/signal-spam.png' },
   { name: 'GDPR Gold',   image: '/images/partners/gdpr.png' },
   { name: 'Litmus',      image: '/images/partners/litmus.png' },
 ]
-
 const legalLinks = [
   { title: 'Cookie policy',        href: '/cookie-policy' },
   { title: 'Website terms of use', href: '/terms' },
   { title: 'Privacy policy',       href: '/privacy' },
 ]
-
-// Detect current path and whether any non-Different section is active
 const currentPath = Astro.url.pathname
 const otherSections = sections.filter(s => s.title !== 'Different…')
 const anyOtherActive = otherSections.some(s => currentPath.startsWith(s.href))
 ---
-<footer
-  aria-labelledby="footer-label"
-  class="bg-[linear-gradient(to_bottom,theme(colors.primary)_10%,theme(colors.footer-background)_100%)] text-gray-300 font-primary"
->
+
+<footer aria-labelledby="footer-label" class="bg-[linear-gradient(to_bottom,theme(colors.primary)_10%,theme(colors.footer-background)_100%)] text-gray-300 font-primary">
   <h2 id="footer-label" class="sr-only">Footer</h2>
 
-  <div
-    class="
-      mx-auto max-w-screen-xl
-      px-4 sm:px-6 lg:px-10 xl:px-20
-      py-6
-      grid grid-cols-1 gap-y-6
-      min-[1150px]:grid-cols-[auto_1fr]
-    "
-  >
+  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-10 xl:px-20 py-6 grid grid-cols-1 gap-y-6 min-[1150px]:grid-cols-[auto_1fr]">
+
     <!-- 1 · Solutions -->
     <div>
       <h3 class="text-white text-lg font-semibold mb-2">Solutions</h3>
       <ul class="space-y-1 pl-4 border-l border-white/30 lg:mr-28 mb-2">
         {solutions.map(s => (
           <li>
-            <a
-              href={s.href}
-              class="hover:text-white transition"
-            >
-              {s.title}
-            </a>
+            <a href={s.href} class="hover:text-white transition">{s.title}</a>
           </li>
         ))}
       </ul>
     </div>
 
     <!-- 2 · Secciones + Partners -->
-    <div
-      class="
-        grid grid-rows-[auto_auto] gap-y-4
-        min-[1150px]:pl-8
-      "
-    >
+    <div class="grid grid-rows-[auto_auto] gap-y-4 items-center text-center min-[1150px]:pl-8">
       <!-- 2a · Online sections -->
-      <nav
-        aria-label="Secciones"
-        class="flex flex-wrap gap-6"
-      >
+      <nav aria-label="Secciones" class="flex flex-wrap gap-6 justify-center md:justify-start">
         {sections.map(s => {
           const isDifferent = s.title === 'Different…'
           let isActive = currentPath.startsWith(s.href)
-          // if it's 'Different…' and no other section is active, mark it active
           if (isDifferent) isActive = !anyOtherActive
           return (
             <a
               href={s.href}
-              class={[
-                'whitespace-nowrap transition',
-                isActive
-                  ? 'text-secondary'
-                  : 'text-gray-300 hover:text-white'
-              ].join(' ')}
-            >
-              {s.title}
-            </a>
+              class={`whitespace-nowrap transition ${isActive ? 'text-secondary' : 'text-gray-300 hover:text-white'}`}
+            >{s.title}</a>
           )
         })}
       </nav>
 
-      <!-- 2b · Logos  -->
-      <div class="flex flex-wrap gap-8">
+      <!-- 2b · Logos -->
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 justify-center md:justify-start items-center justify-items-center md:justify-items-start">
         {partnerBadges.map(b => (
           <img
             src={b.image}
@@ -116,27 +79,17 @@ const anyOtherActive = otherSections.some(s => currentPath.startsWith(s.href))
       </div>
     </div>
 
-    <!-- 3 · Legal  -->
-    <div
-      class="
-        min-[1150px]:col-span-2
-        border-t border-white/20 pt-4
-        flex flex-col sm:flex-row justify-between text-sm text-footer-text
-      "
-    >
+    <!-- 3 · Legal -->
+    <div class="min-[1150px]:col-span-2 border-t border-white/20 pt-4 flex flex-col items-center text-center sm:flex-row sm:justify-between text-xs sm:text-sm text-footer-text">
       <div class="flex flex-wrap gap-4 lowercase">
         {legalLinks.map((l, i) => (
           <span class="flex items-center gap-2">
-            <a href={l.href} class="hover:text-white">
-              {l.title}
-            </a>
+            <a href={l.href} class="hover:text-white transition">{l.title}</a>
             {i < legalLinks.length - 1 && <span aria-hidden="true">|</span>}
           </span>
         ))}
       </div>
-      <div class="mt-4 sm:mt-0">
-        © {new Date().getFullYear()} MailXpertise. All rights reserved.
-      </div>
+      <div class="mt-4 sm:mt-0">© {new Date().getFullYear()} MailXpertise. All rights reserved.</div>
     </div>
   </div>
 </footer>
