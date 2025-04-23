@@ -1,0 +1,87 @@
+---
+
+---
+<section class="relative h-screen w-full overflow-hidden bg-gray-900 pb-20 mb-16">
+  <!-- Video Background -->
+  <div class="absolute inset-0 z-0">
+    <video
+      src="/video-about.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      poster="/placeholder.svg?height=1080&width=1920"
+    />
+    <div class="absolute inset-0 bg-gray-900/50 backdrop-blur-sm z-10"></div>
+  </div>
+
+  <!-- Floating Email Icons -->
+  <div class="absolute inset-0 z-20 overflow-hidden" aria-hidden="true">
+    <div class="absolute left-[20%] top-[80%] opacity-60 text-yellow-400 animate-float-slow">
+      <!-- icon 1 -->
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z" />
+      </svg>
+    </div>
+    <div class="absolute left-[50%] top-[85%] opacity-60 text-yellow-400 animate-float-medium">
+      <!-- icon 2 -->
+      <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z" />
+      </svg>
+    </div>
+    <div class="absolute left-[80%] top-[75%] opacity-60 text-yellow-400 animate-float-fast">
+      <!-- icon 3 -->
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z" />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Dynamic Headline: single H1 for accessibility -->
+  <div class="relative z-30 flex items-center justify-center h-full px-4 pb-72">
+    <div class="text-center max-w-4xl mx-auto relative">
+      <!-- Only one H1 element -->
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white mb-6">
+        <!-- placeholder, visually hidden: first text for screen readers -->
+        <span class="sr-only">executing game changing success…</span>
+      </h1>
+      <!-- Three layered spans for animation, aria-hidden -->
+      <span class="absolute inset-x-0 text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white animate-fade" style="animation-delay: 0s;" aria-hidden="true">
+        executing game changing <span class="text-yellow-400">success…</span>
+      </span>
+      <span class="absolute inset-x-0 text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white animate-fade" style="animation-delay: 5s;" aria-hidden="true">
+        powerful in our <span class="text-yellow-400">approach…</span>
+      </span>
+      <span class="absolute inset-x-0 text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white animate-fade" style="animation-delay: 10s;" aria-hidden="true">
+        powered by creativity, technology and <span class="text-yellow-400">expertise</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Fixed Band Below -->
+  <div class="absolute bottom-0 left-0 right-0 z-30 bg-gray-800/90 backdrop-blur-sm py-4">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="text-center text-white text-lg sm:text-xl font-light">
+        the tailor-made email marketing platform for <span class="font-medium">marketing professionals</span>.
+      </p>
+    </div>
+  </div>
+
+  <style is:global>
+    @keyframes fade {
+      0%, 33.333% { opacity: 0; }
+      5%, 28.333% { opacity: 1; }
+      30%, 100% { opacity: 0; }
+    }
+    .animate-fade {
+      animation: fade 15s ease-in-out infinite both;
+    }
+    @keyframes float-slow { 0% { transform: translateY(0); } 100% { transform: translateY(-120vh); } }
+    .animate-float-slow { animation: float-slow 25s linear infinite; }
+    @keyframes float-medium { 0% { transform: translateY(0); } 100% { transform: translateY(-120vh); } }
+    .animate-float-medium { animation: float-medium 20s linear infinite; }
+    @keyframes float-fast { 0% { transform: translateY(0); } 100% { transform: translateY(-120vh); } }
+    .animate-float-fast { animation: float-fast 15s linear infinite; }
+  </style>
+</section>
