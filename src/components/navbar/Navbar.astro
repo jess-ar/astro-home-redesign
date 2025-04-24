@@ -87,7 +87,6 @@ const linkInactive = "text-white hover:text-secondary";
 >
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-10 xl:px-20">
     <div class="flex items-center justify-between h-16 md:h-20">
-      <!-- toggle: visible under 1150px -->
       <button
         id="navToggle"
         class="block text-white hover:text-secondary min-[1150px]:hidden cursor-pointer"
@@ -108,7 +107,6 @@ const linkInactive = "text-white hover:text-secondary";
         </svg>
       </button>
 
-      <!-- desktop nav (left) -->
       <nav class="hidden items-center space-x-6 min-[1150px]:flex">
         {
           navItems.map((item) => {
@@ -186,7 +184,6 @@ const linkInactive = "text-white hover:text-secondary";
         }
       </nav>
 
-      <!-- logo -->
       <a
         href="/"
         class="flex items-center cursor-pointer"
@@ -198,7 +195,6 @@ const linkInactive = "text-white hover:text-secondary";
         />
       </a>
 
-      <!-- desktop nav (right) -->
       <nav class="hidden items-center space-x-6 min-[1150px]:flex">
         {
           rightNav.map((link) => {
@@ -223,12 +219,10 @@ const linkInactive = "text-white hover:text-secondary";
         }
       </nav>
 
-      <!-- spacer to focus on mobile/tablet -->
       <div class="w-6 min-[1150px]:hidden"></div>
     </div>
   </div>
 
-  <!-- mobile/tablet nav -->
   <nav
     id="mobileNav"
     class="bg-primary shadow-lg hidden min-[1150px]:hidden"
@@ -304,7 +298,6 @@ const linkInactive = "text-white hover:text-secondary";
         })
       }
 
-      {/* mobile right nav */}
       {
         rightNav.map((link) => {
           const isActive = link.href === currentPath;

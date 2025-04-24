@@ -22,29 +22,10 @@ const partners = [
 ];
 ---
 
-<!-- Scroll-reveal script -->
-<script type="module">
-  const logos = document.querySelectorAll(".scroll-reveal");
-  const obs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(({ target, isIntersecting }) => {
-        if (!isIntersecting) return;
-        const delay = target.dataset.delay || 0;
-        target.style.animationDelay = `${delay}ms`;
-        target.classList.add("animate-fade-in-up");
-        obs.unobserve(target);
-      });
-    },
-    { threshold: 0.2 }
-  );
-  logos.forEach((el) => obs.observe(el));
-</script>
-
 <section
   aria-labelledby="partners-heading"
   class="relative py-12 md:py-16 bg-gradient-to-b from-white to-cyan-50 overflow-hidden"
 >
-
   <div class="relative z-10 container mx-auto px-4">
     <div class="text-center mb-10">
       <h2
@@ -53,37 +34,36 @@ const partners = [
         data-delay="0"
       >
         <span class="bg-gradient-to-r from-blue-950 via-blue-800 to-cyan-600 text-transparent bg-clip-text">
-          who we work with
+          Who we work with
         </span>
       </h2>
-      <div class="w-20 h-1 bg-secondary mx-auto mt-3 mb-6 animate-scale-in"></div>
+      <div class="w-20 h-1 bg-secondary mx-auto mt-3 mb-6 animate-scale-in" aria-hidden="true"></div>
       <p
         class="scroll-reveal opacity-0 text-gray-700 text-base md:text-lg leading-relaxed max-w-4xl mx-auto"
-        data-delay="140"
+        data-delay="100"
       >
-      For more than 10 years we have integrated with some of the world's leading brands and agencies delivering a host of solutions meeting individual email marketing strategies, generated new audiences, grown income and widen reach through automation.
+        For over 10 years, we've powered marketing strategies for leading brands and agencies—growing audiences, increasing revenue, and automating seamless campaigns.
       </p>
     </div>
 
-    <!-- Compact grid -->
     <ul
       role="list"
       class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 md:gap-6 max-w-5xl mx-auto"
     >
       {partners.map((p, i) => (
         <li
+          role="listitem"
           class="scroll-reveal flex items-center justify-center opacity-0"
-          data-delay={200 + i * 80}
+          data-delay={i * 50}
         >
           <div
             class="relative w-28 h-28 rounded-full bg-white/60 backdrop-blur-sm flex items-center justify-center transition-transform duration-300 hover:scale-105 hover:rotate-3"
-            aria-label={p.name}
           >
-
             <img
               src={p.logo}
               alt={p.name}
               class="max-w-3/4 max-h-3/4 object-contain"
+              loading="lazy"
             />
           </div>
         </li>
@@ -91,7 +71,41 @@ const partners = [
     </ul>
   </div>
 
-  <style is:global>
+  <!-- Scroll-reveal script with faster delays and repeated animation -->
+  <script is="client" type="module">
+    (function() {
+      const items = document.querySelectorAll('.scroll-reveal');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Initial hidden state
+      items.forEach(el => {
+        el.classList.add('opacity-0');
+        el.style.transform = 'translateY(1rem)';
+      });
+      if (reduced) {
+        items.forEach(el => {
+          el.classList.remove('opacity-0');
+          el.style.transform = 'none';
+        });
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          const delay = target.dataset.delay || 0;
+          if (isIntersecting) {
+            target.style.transition = `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms`;
+            target.classList.remove('opacity-0');
+            target.style.transform = 'translateY(0)';
+          } else {
+            target.classList.add('opacity-0');
+            target.style.transform = 'translateY(1rem)';
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+      items.forEach(el => observer.observe(el));
+    })();
+  </script>
+
+  <style is="global">
     @keyframes fade-in-up {
       0%   { opacity: 0; transform: translateY(20px) scale(0.95); }
       100% { opacity: 1; transform: translateY(0)      scale(1); }

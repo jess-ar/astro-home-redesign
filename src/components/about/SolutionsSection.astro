@@ -1,87 +1,89 @@
----
-
----
-
-<!-- Script to reveal when scrolling -->
-<script is:client type="module">
-  const elements = document.querySelectorAll(".scroll-reveal");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target;
-          const delay = el.dataset.delay || 0;
-          el.style.animationDelay = `${delay}ms`;
-          el.classList.add("animate-fade-in-down");
-          observer.unobserve(el);
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-  elements.forEach((el) => observer.observe(el));
-</script>
-
-<section class="relative overflow-hidden">
-  <!-- Gradient background -->
+<section class="relative overflow-hidden" aria-labelledby="solutions-heading">
   <div
     class="absolute inset-0 bg-gradient-to-br from-blue-950 via-blue-800 to-cyan-600"
-  >
-  </div>
+    aria-hidden="true"
+  ></div>
 
-  <div class="absolute inset-0 pointer-events-none">
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <div
       class="absolute inset-0 bg-cover bg-center animate-sparkle"
       style="background-image: url('/images/about/glitter.jpg'); opacity: 0.05;"
-    >
-    </div>
+    ></div>
   </div>
 
-  <!-- Focused content -->
   <div class="relative z-10 container mx-auto px-4 py-20 md:py-28 lg:py-36">
     <div class="max-w-5xl mx-auto space-y-6">
       <h2
-        data-delay="0"
+        id="solutions-heading"
         class="scroll-reveal font-condensed text-4xl md:text-5xl lg:text-6xl text-white opacity-0"
+        data-delay="0"
       >
         solutions designed
       </h2>
       <h2
-        data-delay="200"
         class="scroll-reveal font-bold text-5xl md:text-6xl lg:text-7xl text-white opacity-0"
+        data-delay="200"
       >
         to <span class="text-secondary">optimise</span> delivery,
       </h2>
       <h2
-        data-delay="400"
         class="scroll-reveal font-condensed text-4xl md:text-5xl lg:text-6xl text-white opacity-0"
+        data-delay="400"
       >
         in an environment without
       </h2>
       <h2
-        data-delay="600"
         class="scroll-reveal font-bold text-5xl md:text-6xl lg:text-7xl text-white opacity-0"
+        data-delay="600"
       >
         <span class="text-secondary">compromise</span> or restriction.
       </h2>
     </div>
   </div>
 
-  <!-- Decorative bottom edge -->
   <div
     class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white/20 to-transparent"
-  >
-  </div>
+    aria-hidden="true"
+  ></div>
 
-  <style is:global>
+  <script is="client" type="module">
+    (function() {
+      const els = document.querySelectorAll('.scroll-reveal');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Initialize hidden state
+      els.forEach(el => {
+        el.classList.add('opacity-0');
+        el.style.transform = 'translateY(1rem)';
+      });
+      if (reduced) {
+        // Remove transitions if reduced motion
+        els.forEach(el => {
+          el.classList.remove('opacity-0');
+          el.style.transform = 'none';
+        });
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          const delay = target.dataset.delay || 0;
+          if (isIntersecting) {
+            target.style.transition = `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`;
+            target.classList.remove('opacity-0');
+            target.style.transform = 'translateY(0)';
+          } else {
+            target.classList.add('opacity-0');
+            target.style.transform = 'translateY(1rem)';
+          }
+        });
+      }, { threshold: 0.2 });
+      els.forEach(el => observer.observe(el));
+    })();
+  </script>
+
+  <style is="global">
     @keyframes sparkle {
-      0%,
-      100% {
-        opacity: 0.04;
-      }
-      50% {
-        opacity: 0.1;
-      }
+      0%, 100% { opacity: 0.04; }
+      50% { opacity: 0.1; }
     }
     .animate-sparkle {
       animation: sparkle 12s ease-in-out infinite;
