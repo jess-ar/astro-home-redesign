@@ -1,87 +1,87 @@
----
-
----
-
-<section aria-labelledby="about-heading" class="py-20 md:py-24 lg:py-32 bg-gray-50">
+<section id="about" class="relative bg-gray-50 py-16">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-10 xl:px-20">
-  <div>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-x-12">
+    <h2 class="text-6xl sm:text-8xl font-extrabold text-center mb-12">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-950 via-blue-800 to-cyan-600">
+        About
+      </span>
+      <span class="text-yellow-400">.</span>
+    </h2>
 
-      <!-- Text column -->
-      <div class="lg:col-span-6">
-        <h2 id="about-heading" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 tracking-tight">
-          about<span class="text-yellow-400">.</span>
-        </h2>
-        <div class="space-y-6 text-gray-700 text-base md:text-lg leading-relaxed">
-          <p>
-            We are MailXpertise, a global ESP (email service provider), specialists in made-to-measure email and SMS solutions for marketing professionals.
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+
+      <!-- Main text con fondo de X -->
+      <div
+        class="relative overflow-hidden reveal opacity-0 translate-y-4 transition duration-700 max-w-md mx-auto lg:max-w-none lg:mx-0"
+      >
+        <div
+          class="absolute inset-0 bg-no-repeat bg-left bg-contain opacity-10 animate-float"
+          style="background-image: url('/images/logos/x-logo.svg')"
+          aria-hidden="true"
+        ></div>
+        <div class="space-y-6 text-gray-700 relative z-10">
+          <p class="text-lg leading-relaxed">
+            We are <strong>MailXpertise</strong>, a global ESP (email service provider), specialists in made-to-measure
+            <strong>email and SMS solutions</strong> for marketing professionals.
           </p>
-          <p>
-            With proprietary software and marketing know-how, expertise in acquisition and monetisation, we consult to discover the needs and approach of a client's marketing strategy, goals, objectives and targets.
+          <p class="text-lg leading-relaxed">
+            With proprietary software and marketing know-how, expertise in acquisition and monetisation, we consult to
+            discover the needs and approach of a client's marketing strategy, goals, objectives and targets.
           </p>
-          <p>
-            By doing this a cohesive and fully integrated platform is delivered, allowing data to be managed to an optimum level, with opportunity to facilitate growth in acquisition and monetisation, structure segmentation, plus the ability to generate creative campaigns with seamless reporting and analytics combined.
+          <p class="text-lg leading-relaxed">
+            By doing this a cohesive and fully integrated platform is delivered, allowing data to be managed to an optimum
+            level, with opportunity to facilitate growth in acquisition and monetisation, structure segmentation, plus the
+            ability to generate creative campaigns with seamless reporting and analytics combined.
           </p>
         </div>
       </div>
 
-      <!-- Testimonial column with decorative car image -->
-      <div class="lg:col-span-5 lg:col-start-8">
-        <div class="relative">
-          <!-- Decorative car image on the right -->
-          <img
-            src="/images/about/clio.png"
-            alt="Renault Clio"
-            class="absolute -top-10 -right-10 w-40 md:w-48 opacity-90"
-          />
-
-          <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 pt-8 lg:pt-16">
-            <!-- Company logo only -->
-            <div class="p-6 pb-2 flex justify-center">
-              <img
-                src="/images/about/publicis-groupe-300x128.png"
-                alt="Publicis Groupe logo"
-                class="w-32 md:w-40 object-contain"
-              />
-            </div>
-
-            <!-- Pull quote -->
-            <div class="relative pl-6 pr-8 py-4 mb-4">
-              <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-yellow-400"></div>
-              <blockquote class="text-lg md:text-xl font-medium text-gray-800 italic">
-                "Integrating MailXpertise tailor-made solution allowed us to reinforce and grow our partnership with Renault."
-              </blockquote>
-            </div>
-
-            <!-- Supporting paragraphs -->
-            <div class="px-6 space-y-4">
-              <p class="text-gray-600">
-                Our collaboration with MailXpertise has exceeded all our expectations by engineering a unique and innovative solution.
-              </p>
-              <p class="text-gray-600">
-                The quality of the deliverability team was also key to our success by providing the best knowledge to help us on a daily basis.
-              </p>
-              <p class="text-gray-600">
-                We are now integrating MailXpertise on all our consultations with new customers.
-              </p>
-            </div>
-
-            <!-- Author info -->
-            <div class="flex items-center gap-4 pt-4 pb-6 px-10">
-              <img
-                src="/images/about/thomas-dussidour.png"
+      <!-- Testimonial -->
+      <div
+        class="reveal opacity-0 translate-y-4 transition duration-700 delay-300 max-w-md mx-auto lg:max-w-none lg:mx-0"
+      >
+        <div>
+          <blockquote class="border-l-4 border-yellow-400 pl-4 italic text-gray-800 mb-6">
+            “Integrating MailXpertise’s tailor-made solution reinforced and grew our partnership with Renault.”
+          </blockquote>
+          <div class="space-y-4 lg:space-y-8 text-gray-600 mb-4">
+            <p>
+              Our collaboration with MailXpertise has exceeded all our expectations by engineering a unique and innovative solution.
+            </p>
+            <p>
+              The quality of the deliverability team was also key to our success, providing the best knowledge to help us on a daily basis.
+            </p>
+            <p class="border-r-4 border-yellow-400 pr-4">
+              We are now integrating MailXpertise on all our consultations with new customers.
+            </p>
+          </div>
+          <div class="flex items-center my-12">
+            <img src="/images/about/thomas-dussidour.png"
                 alt="Thomas Dussidour"
-                class="w-12 h-12 rounded-full object-cover"
-              />
-              <cite class="not-italic">
-                <div class="font-medium text-gray-900">Thomas Dussidour</div>
-                <div class="text-sm text-gray-500">Account Director – Epsilon, Publicis Groupe</div>
-              </cite>
+                class="w-15 h-15 rounded-full mr-4"/>
+            <div>
+              <p class="font-semibold text-gray-900">Thomas Dussidour</p>
+              <p class="text-sm text-gray-500">Account Director – Epsilon, Publicis Groupe</p>
             </div>
           </div>
         </div>
       </div>
 
     </div>
+
+    <div class="mt-16 h-1 bg-yellow-400 w-24 mx-auto"></div>
   </div>
+
+  <script is="client">
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) {
+          target.classList.remove('opacity-0', 'translate-y-4');
+          target.classList.add('opacity-100', 'translate-y-0');
+          observer.unobserve(target);
+        }
+      });
+    }, { threshold: 0.2 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
 </section>

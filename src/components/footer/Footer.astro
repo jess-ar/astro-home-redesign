@@ -1,5 +1,4 @@
 ---
-// src/components/footer/Footer.astro
 const solutions = [
   { title: 'Professional', href: '/solutions/professional' },
   { title: 'Agency',       href: '/solutions/agency' },
@@ -36,7 +35,7 @@ const anyOtherActive = otherSections.some(s => currentPath.startsWith(s.href))
 
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-10 xl:px-20 py-6 grid grid-cols-1 gap-y-6 min-[1150px]:grid-cols-[auto_1fr]">
 
-    <!-- 1 · Solutions -->
+    <!--Solutions -->
     <div>
       <h3 class="text-white text-lg font-semibold mb-2">Solutions</h3>
       <ul class="space-y-1 pl-4 border-l border-white/30 lg:mr-28 mb-2">
@@ -48,9 +47,8 @@ const anyOtherActive = otherSections.some(s => currentPath.startsWith(s.href))
       </ul>
     </div>
 
-    <!-- 2 · Secciones + Partners -->
+    <!-- Secciones + Partners -->
     <div class="grid grid-rows-[auto_auto] gap-y-4 items-center text-center min-[1150px]:pl-8">
-      <!-- 2a · Online sections -->
       <nav aria-label="Secciones" class="flex flex-wrap gap-6 justify-center md:justify-start">
         {sections.map(s => {
           const isDifferent = s.title === 'Different…'
@@ -65,7 +63,7 @@ const anyOtherActive = otherSections.some(s => currentPath.startsWith(s.href))
         })}
       </nav>
 
-      <!-- 2b · Logos -->
+      <!-- Logos -->
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 justify-center md:justify-start items-center justify-items-center md:justify-items-start">
         {partnerBadges.map(b => (
           <img
@@ -79,7 +77,7 @@ const anyOtherActive = otherSections.some(s => currentPath.startsWith(s.href))
       </div>
     </div>
 
-    <!-- 3 · Legal -->
+    <!--Legal -->
     <div class="min-[1150px]:col-span-2 border-t border-white/20 pt-4 flex flex-col items-center text-center sm:flex-row sm:justify-between text-xs sm:text-sm text-footer-text">
       <div class="flex flex-wrap gap-4 lowercase">
         {legalLinks.map((l, i) => (
