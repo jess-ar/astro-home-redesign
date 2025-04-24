@@ -23,6 +23,11 @@
 }
 
 @layer base {
+
+  html {
+    scroll-behavior: smooth;
+  }
+
     /* Webkit Browsers (Chrome, Safari, Edge) */
   ::-webkit-scrollbar {
     width: 10px;
@@ -43,6 +48,15 @@
   * {
     scrollbar-color: var(--color-secondary) var(--color-footer-background);
     scrollbar-width: thin;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
   }
 }
 
@@ -115,11 +129,9 @@
   font-display: swap;
 }
 
-
 html {
   font-family: 'Poppins', var(--font-fallback);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
-

@@ -1,18 +1,13 @@
-<section id="about" class="relative bg-gray-50 py-16">
+<section id="intro" class="relative bg-gray-50 py-16 scroll-mt-24">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-10 xl:px-20">
     <h2 class="text-6xl sm:text-8xl font-extrabold text-center mb-12">
-      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-950 via-blue-800 to-cyan-600">
-        About
-      </span>
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-950 via-blue-800 to-cyan-600">About</span>
       <span class="text-yellow-400">.</span>
     </h2>
 
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
-      <!-- Main text con fondo de X -->
-      <div
-        class="relative overflow-hidden reveal opacity-0 translate-y-4 transition duration-700 max-w-md mx-auto lg:max-w-none lg:mx-0"
-      >
+      <div class="relative overflow-hidden reveal opacity-0 translate-y-4 transition duration-700 max-w-md mx-auto lg:max-w-none lg:mx-0">
         <div
           class="absolute inset-0 bg-no-repeat bg-left bg-contain opacity-10 animate-float"
           style="background-image: url('/images/logos/x-logo.svg')"
@@ -35,11 +30,8 @@
         </div>
       </div>
 
-      <!-- Testimonial -->
-      <div
-        class="reveal opacity-0 translate-y-4 transition duration-700 delay-300 max-w-md mx-auto lg:max-w-none lg:mx-0"
-      >
-        <div>
+      <div class="reveal opacity-0 translate-y-4 transition duration-700 delay-300 max-w-md mx-auto lg:max-w-none lg:mx-0">
+        <figure>
           <blockquote class="border-l-4 border-yellow-400 pl-4 italic text-gray-800 mb-6">
             “Integrating MailXpertise’s tailor-made solution reinforced and grew our partnership with Renault.”
           </blockquote>
@@ -54,34 +46,48 @@
               We are now integrating MailXpertise on all our consultations with new customers.
             </p>
           </div>
-          <div class="flex items-center my-12">
-            <img src="/images/about/thomas-dussidour.png"
-                alt="Thomas Dussidour"
-                class="w-15 h-15 rounded-full mr-4"/>
+          <figcaption class="flex items-center my-12">
+            <img
+              src="/images/about/thomas-dussidour.png"
+              alt="Photo of Thomas Dussidour"
+              class="w-15 h-15 rounded-full mr-4"
+            />
             <div>
               <p class="font-semibold text-gray-900">Thomas Dussidour</p>
               <p class="text-sm text-gray-500">Account Director – Epsilon, Publicis Groupe</p>
             </div>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       </div>
 
     </div>
 
-    <div class="mt-16 h-1 bg-yellow-400 w-24 mx-auto"></div>
+    <div class="mt-16 h-1 bg-yellow-400 w-24 mx-auto" aria-hidden="true"></div>
   </div>
 
-  <script is="client">
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(({ target, isIntersecting }) => {
-        if (isIntersecting) {
-          target.classList.remove('opacity-0', 'translate-y-4');
-          target.classList.add('opacity-100', 'translate-y-0');
-          observer.unobserve(target);
-        }
-      });
-    }, { threshold: 0.2 });
-    reveals.forEach(el => observer.observe(el));
+  <script is="client" type="module">
+    (function() {
+      const reveals = document.querySelectorAll('.reveal');
+      // Respect user's preference for reduced motion
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        reveals.forEach(el => {
+          el.classList.replace('opacity-0', 'opacity-100');
+          el.classList.replace('translate-y-4', 'translate-y-0');
+        });
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (isIntersecting) {
+            target.classList.replace('opacity-0', 'opacity-100');
+            target.classList.replace('translate-y-4', 'translate-y-0');
+          } else {
+            target.classList.replace('opacity-100', 'opacity-0');
+            target.classList.replace('translate-y-0', 'translate-y-4');
+          }
+        });
+      }, { threshold: 0.2 });
+      reveals.forEach(el => observer.observe(el));
+    })();
   </script>
 </section>

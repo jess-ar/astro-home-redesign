@@ -1,43 +1,33 @@
 <section
   class="relative h-screen flex items-center justify-center overflow-hidden bg-fixed bg-center bg-cover"
 >
-  <!-- Overlay semi-transparent -->
   <div
     class="absolute inset-0 bg-gradient-to-br from-primary/80 to-secondary/80"
   >
   </div>
 
-  <!-- Core content with writing effect -->
   <div class="relative z-20 text-center px-2 md:px-14 xl:px-52">
     <h1
       class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6"
     >
-      <span
-        id="typing"
-        class="border-r-4 border-white"
-      ></span>
+    <span id="typing" class="border-r-4 border-white" aria-live="polite"></span>
     </h1>
     <p class="text-lg sm:text-xl text-white/80 mb-8 max-w-2xl mx-auto">
       The tailor-made email marketing platform designed to empower marketing
       professionals.
     </p>
     <a
-      href="#services"
+      href="#intro"
       class="inline-block px-8 py-3 bg-white text-gray-900 font-semibold rounded-full shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 transition-shadow duration-200"
     >
-      Learn More
+    Learn more about us
     </a>
   </div>
 
-  <!-- Decoration with subtle dots -->
   <div class="absolute inset-0 z-10 pointer-events-none">
-    <canvas
-      id="dotsCanvas"
-      class="w-full h-full"
-    ></canvas>
+    <canvas id="dotsCanvas" class="w-full h-full" aria-hidden="true" role="presentation"></canvas>
   </div>
 
-  <!-- Yellow line at the base -->
   <div class="absolute bottom-0 left-0 right-0 h-3 bg-secondary z-30"></div>
 
   <script is="client">
