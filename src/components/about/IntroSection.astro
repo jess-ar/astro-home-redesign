@@ -14,26 +14,33 @@
           aria-hidden="true"
         ></div>
         <div class="space-y-6 text-gray-700 relative z-10">
-          <p class="text-lg leading-relaxed">
-            We are <strong>MailXpertise</strong>, a global ESP (email service provider), specialists in made-to-measure
-            <strong>email and SMS solutions</strong> for marketing professionals.
-          </p>
-          <p class="text-lg leading-relaxed">
-            With proprietary software and marketing know-how, expertise in acquisition and monetisation, we consult to
-            discover the needs and approach of a client's marketing strategy, goals, objectives and targets.
-          </p>
-          <p class="text-lg leading-relaxed">
-            By doing this a cohesive and fully integrated platform is delivered, allowing data to be managed to an optimum
-            level, with opportunity to facilitate growth in acquisition and monetisation, structure segmentation, plus the
-            ability to generate creative campaigns with seamless reporting and analytics combined.
-          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <span class="mt-1 mr-3 text-blue-950">•</span>
+              <p class="text-lg leading-relaxed">
+                We are <strong class="text-blue-950">MailXpertise</strong>, a global <strong>ESP</strong> (email service provider), specialists in made-to-measure <strong class="text-blue-950">email and SMS solutions</strong> for marketing professionals.
+              </p>
+            </li>
+            <li class="flex items-start">
+              <span class="mt-1 mr-3 text-blue-950">•</span>
+              <p class="text-lg leading-relaxed">
+                With proprietary software and marketing know-how, expertise in <strong>acquisition</strong> and <strong>monetisation</strong>, we consult to discover the needs and approach of a client's marketing strategy, goals, objectives and targets.
+              </p>
+            </li>
+            <li class="flex items-start">
+              <span class="mt-1 mr-3 text-blue-950">•</span>
+              <p class="text-lg leading-relaxed">
+                By doing this a cohesive and <strong>fully integrated platform</strong> is delivered, allowing data to be managed to an optimum level, with opportunity to facilitate growth in acquisition and monetisation, structure segmentation, plus the ability to generate creative campaigns with seamless reporting and analytics combined.
+              </p>
+            </li>
+          </ul>
         </div>
       </div>
 
       <div class="reveal opacity-0 translate-y-4 transition duration-700 delay-300 max-w-md mx-auto lg:max-w-none lg:mx-0">
         <figure>
           <blockquote class="border-l-4 border-yellow-400 pl-4 italic text-gray-800 mb-6">
-            “Integrating MailXpertise’s tailor-made solution reinforced and grew our partnership with Renault.”
+            Integrating MailXpertise’s tailor-made solution reinforced and grew our partnership with Renault.
           </blockquote>
           <div class="space-y-4 lg:space-y-8 text-gray-600 mb-4">
             <p>
@@ -68,7 +75,6 @@
   <script is="client" type="module">
     (function() {
       const reveals = document.querySelectorAll('.reveal');
-      // Respect user's preference for reduced motion
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         reveals.forEach(el => {
           el.classList.replace('opacity-0', 'opacity-100');
@@ -90,4 +96,12 @@
       reveals.forEach(el => observer.observe(el));
     })();
   </script>
+
+  <style is="global">
+    @keyframes sparkle {
+      0%, 100% { opacity: 0.04; }
+      50% { opacity: 0.1; }
+    }
+    .animate-float { animation: sparkle 12s ease-in-out infinite; }
+  </style>
 </section>

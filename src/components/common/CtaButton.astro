@@ -1,0 +1,45 @@
+---
+---
+<a
+  href={Astro.props.href || '#intro'}
+  class="relative inline-block px-8 py-3 font-semibold text-white rounded-full overflow-hidden bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] animate-gradient-x"
+>
+  <span class="relative z-10">{Astro.props.text || 'Get Started'}</span>
+  <span
+    class="absolute inset-0 mix-blend-screen opacity-0 animate-shine bg-white/50"
+  ></span>
+  <span class="absolute inset-0 rounded-full animate-pulse-ring"></span>
+</a>
+
+<style is="global">
+  @keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes shine {
+    0% { left: -100%; opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { left: 100%; opacity: 0; }
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(var(--color-secondary-rgb), 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(var(--color-secondary-rgb), 0); }
+    100% { box-shadow: 0 0 0 0 rgba(var(--color-secondary-rgb), 0); }
+  }
+
+  .animate-gradient-x {
+    background-size: 200% auto;
+    animation: gradient-x 3s linear infinite;
+  }
+  .animate-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    animation: shine 2s infinite;
+  }
+  .animate-pulse-ring {
+    animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  }
+</style>
